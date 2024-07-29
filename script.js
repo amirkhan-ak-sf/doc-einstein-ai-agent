@@ -83,15 +83,8 @@ function formatReply(reply) {
 // Function to add the introductory message from the bot
 function addIntroMessage() {
   const introMessage = `
-    Hi, I'm Einstein, an AI Agent built with MuleChain on the MuleSoft Anypoint Platform. 
-    Every interaction with me is <b>secured</b> through the <b>Einstein Trust Layer</b>! 
-    Here are my key skills:
-    - Check <b>SAP ECC</b> inventory
-    - Retrieve <b>SAP S4H</b> order details
-    - Access <b>Salesforce</b> CRM accounts details
-    - Gather <b>Hubspot</b> sales leads
-    - Display <b>Workday</b> employee info
-    - Order laptops from your asset <b>portal</b>
+    Hi, I'm Einstein, Hi, an AI Agent built with the MuleChain Project on the MuleSoft Anypoint Platform.
+I have been specialized on MuleSoft Documentation and trained to know almost everything from docs.mulesoft.com.
   `;
   addMessage('bot', formatReply(introMessage));
 }
