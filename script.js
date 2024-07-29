@@ -29,7 +29,7 @@ async function sendMessage() {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
       },
-      body: JSON.stringify({ prompt: userInput }),
+      body: JSON.stringify({ question: userInput }),
     });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -37,7 +37,7 @@ async function sendMessage() {
 
     const data = await response.json();
     const generatedText = data.generation.generatedText;
-    updateIndicators(data.generation.contentQuality.scanToxicity.categories);
+    //updateIndicators(data.generation.contentQuality.scanToxicity.categories);
 
     addMessage('bot', formatReply(generatedText));
   } catch (error) {
@@ -48,7 +48,7 @@ async function sendMessage() {
 
 
 function updateIndicators(categories) {
-  initializeIndicators();
+  //initializeIndicators();
   categories.forEach(category => {
     const indicator = document.getElementById(`${category.categoryName.toLowerCase()}-indicator`);
     if (indicator) {
