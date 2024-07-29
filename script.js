@@ -82,11 +82,10 @@ function formatReply(reply) {
 
 // Function to add the introductory message from the bot
 function addIntroMessage() {
-  const introMessage = `
-    Hi, I'm Einstein, Hi, an AI Agent built with the MuleChain Project on the MuleSoft Anypoint Platform.
+  const introMessage = `Hi, I'm Einstein, an AI Agent built with the MuleChain Project on the MuleSoft Anypoint Platform.
 I have been specialized on MuleSoft Documentation and trained to know almost everything from docs.mulesoft.com.
   `;
-  addMessage('bot', formatReply(introMessage));
+  addMessage('bot', introMessage);
 }
 
 // Add the introductory message when the page loads
