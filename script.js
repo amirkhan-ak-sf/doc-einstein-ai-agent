@@ -23,7 +23,7 @@ async function sendMessage() {
   document.getElementById('user-input').value = ''; // Clear the input field
 
   try {
-    const response = await fetch('https://knowledge-einsteinai-xnz8ue.5sc6y6-3.usa-e2.cloudhub.io/prompt', {
+    const response = await fetch('https://rfp-einstein-kkvkik.5sc6y6-1.usa-e2.cloudhub.io/prompt', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ async function sendMessage() {
     }
 
     const data = await response.json();
-    const generatedText = data.generation.generatedText;
+    const generatedText = data.aiResponse.generatedText;
     //updateIndicators(data.generation.contentQuality.scanToxicity.categories);
 
     addMessage('bot', formatReply(generatedText));
