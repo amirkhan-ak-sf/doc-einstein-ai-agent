@@ -37,12 +37,41 @@ async function sendMessage() {
 
     const data = await response.json();
     const generatedText = data.aiResponse.generatedText;
-    //updateIndicators(data.generation.contentQuality.scanToxicity.categories);
+    const parts = generatedText.split('`');
 
-    addMessage('bot', formatReply(generatedText));
+    const pElement = document.createElement('p');
+
+    for (let i = 0; i < parts.length; i++) {
+      if (i % 2 === 0) {
+        // Text outside backticks
+        pElement.appendChild(document.createTextNode(parts[i]));
+      } else {
+        // Text inside backticks
+        const codeElement = document.createElement('code');
+        codeElement.style.backgroundColor = '#ffffff'; // Change the background color here
+        codeElement.style.color = '#008000'; // Change the font color here
+        codeElement.appendChild(document.createTextNode(parts[i]));
+        pElement.appendChild(codeElement);
+      }
+    }
+
+    const text = pElement.outerHTML.replace(/\n/g, '<br>')
+
+    //updateIndicators(data.generation.contentQuality.scanToxicity.categories);
+    console.log(text);
+
+    //loadingMessageElement.remove();
+
+    addMessage('bot', text);
   } catch (error) {
     addMessage('bot', 'Error: Unable to communicate with the AI.');
     console.error('Error:', error);
+  } finally {
+    // Enable the input field and the send button
+    document.getElementById('user-input').disabled = false;
+    document.getElementById('send-btn').disabled = false;
+    document.getElementById('user-input').focus();
+    currentMessageIndex = 0;
   }
 }
 
@@ -82,7 +111,7 @@ function formatReply(reply) {
 
 // Function to add the introductory message from the bot
 function addIntroMessage() {
-  const introMessage = `Hi, I'm Einstein, an AI Agent built with the MuleChain Project on the MuleSoft Anypoint Platform.
+  const introMessage = `Hi, I'm Einstein, an AI Agent built with the MAC Project on the MuleSoft Anypoint Platform.
 I have been specialized on MuleSoft Documentation and trained to know almost everything from docs.mulesoft.com.
   `;
   addMessage('bot', introMessage);
